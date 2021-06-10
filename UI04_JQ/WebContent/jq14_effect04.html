@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+    img {width: 200px; height: 200px;}
+    .addSize {width: 300px; height: 300px;}
+    .onOffImg {display: none;}
+</style>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+
+<script type="text/javascript">
+$(function(){
+    $("#btn").click(function() {
+        $("img").toggleClass("onOffImg");	// 이미지 on/off
+    });
+    
+    $("img").click(function() {
+        if ($(this).hasClass("addSize")) { 
+            $(this).removeClass("addSize").attr("title", "크기 복귀");
+        } else {
+            $(this).addClass("addSize").attr("title","크기 커짐");
+        }
+    });
+});
+
+
+// img클ㄹ릭했을때, 만일 addsize가 있다면, addsize를 지워라. 그리고 title을 크기 복귀로 변경해라
+// 그게 아니면 addsize를 ?? title을 크기 커짐으로 변경해라. 
+// 개발자 도구를 확인해보면, 이미지를 클릭했을때 확대되면서(크기 커짐) 다시 클릭하면 크기가 줄면서(크기 복귀)라고 title(속성)이 바뀐다. 
+// hasclass: 해당 클래스가 있는지 없는지 확인한다. 있으면 true, 없으면 false
+// toggleClass: addclass+removeclass 합친 것.
+
+
+</script>
+</head>
+<body>
+
+    <button id="btn">이미지 on/off</button>
+
+    <br/>
+
+    <img src="resources/image/img01.PNG" alt="img01" title="이미지 1번">
+    <img src="resources/image/img02.PNG" alt="img02" title="이미지 2번">
+    <img src="resources/image/img03.PNG" alt="img03" title="이미지 3번">
+
+</body>
+</html>

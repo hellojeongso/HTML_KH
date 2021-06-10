@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+	img{
+		width: 100px;
+		height: 100px;
+	}
+
+</style>
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	function resizeImg(){
+		$("img").css({"width": "200px", "height": "200px"})
+	} //이미지 찾아서 css를 바꾸자 width, height
+	
+		//$("img").css({"width":"200px", "height":"200px"}); 중괄호 써서  이렇게 한번에 쓸 수 도 있다. 
+	
+	function idSelector(){
+		$("#selid").hide();
+	}	// id는 유일한 하나이기때문에 첫번째 id만 찾아오고 끝내버림. css는 id 여러개도 되지만 제이쿼리는 허용 안됨
+		// togle은 숨겼다 보여줬다 반복, hide는 숨기고 끝 
+	
+	function classSelector(){
+		$(".selclass").css("opacity", "0.5");
+	} 
+	
+	function propSelector(){
+		$("img[title*=02]").slideUp("2000");
+	} // img 태그 중에 title태그들 중에 02를 포함하고 있는애 *= 
+	 // slideUp 400미리세컨드가 디폴트
+	
+	function changeImg(){
+		$("td>img").attr("src", "resources/image/img02.PNG");
+	} // td가 가진 img태그를 찾아서 td>img  
+
+
+
+</script>
+</head>
+<body>
+
+	<h1>1. 이미지들의 크기를 모두 200px * 200px로 설정하자.</h1>
+	<button onclick="resizeImg();">클릭!</button>
+	
+	<h1>2. 이미지들 중 id가 'selid'인 태그를 찾아, 숨기자</h1>
+	<button onclick="idSelector();">클릭!</button>
+	
+	<h1>3. 이미지들 중 class가 'selclass'인 태그를 찾아, 투명도를 50%로 설정하자.</h1>
+	<button onclick="classSelector();">클릭!</button>
+	
+	<h1>4. 이미지들 중 속성값으로 탐색하여 slideUp 기능을 적용하자.</h1>
+	<h3>title 속성 중, '02'를 포함하는 img 태그</h3>
+	<h3>slideUp은 2000ms로 적용</h3>
+	<button onclick="propSelector();">클릭!</button>
+	
+	<h1>5. 이미지 바꾸기 (td의 자식요소인 img만 선택해서 img02.png로 바꾸자.)</h1>
+	<button onclick="changeImg()";>클릭!</button>
+	
+	<table>
+		<tr>
+			<td><img title="img01" id="selid" alt="test01" src="resources/image/img01.PNG"></td>
+			<td><img title="img02"  alt="test01" src="resources/image/img01.PNG"></td>
+			<td><img title="img03"  class="selclass" alt="test01" src="resources/image/img01.PNG"></td>
+			<td><img title="img04"  class="selclass" alt="test01" src="resources/image/img01.PNG"></td>
+		</tr>
+		<tr>
+			<td><img title="img05"  id="selid" alt="test01" src="resources/image/img01.PNG"></td>
+			<td><span><img  title="img06" alt="test01" src="resources/image/img01.PNG"></span></td>
+			<td><span><img  title="img07" class="selclass" alt="test01" src="resources/image/img01.PNG"></span></td>
+			<td><img  title="img08" class="selclass" alt="test01" src="resources/image/img01.PNG"></td>
+		</tr>		
+	</table>
+</body>
+</html>

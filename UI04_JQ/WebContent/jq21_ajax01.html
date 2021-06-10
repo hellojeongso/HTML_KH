@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+    * {margin: 0px; padding: 0px;}
+    table {width: 400px;}
+    table tr:nth-child(odd) {background: orange;}
+    fieldset {width: 400px;}
+    body {width: 1000px; margin: 50px auto;}
+</style>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $("#emp_list").click(function() {
+        var empid = $("input[name=empid]").val(); // input(name=empid)에 입력한 값을 변수 empid에 대입한다. 
+      
+        if (!isNaN(empid) && empid.length == 3) { // 여기로 넘어온 값이 숫자이고, 세자리 숫자라면 (유효성 검사) 
+        	$.ajax({ 		// 객체리터럴..({,})로 감싸면 객체  
+                url: "emplist.xml",	             // 통신할(요청할) 서버(혹은 데이터..페이지, 파일) 주소
+                method: "get",                  // 전송 방식 get/post방식 설정 
+                async: true,                    // 비동기 여부 (default: true) -> false: (동기) 비동기로 갈거니?라는 뜻
+                dataType: "xml",                // 응답받은 데이터의 형식, 통신이 성공하면 리턴받을 data의 type(html, script, text, xml, json, ...)
+                // data(속성)도 있다. data: {"key": "value", "key": "value"} // 전송할 데이터
+                success: function(data) {       // 통신에 성공했을 때, 실행할 함수
+                	// (data)에는 xml이 들어있다. 
+                    var empInfo = $(data).find("EMPLOYEE_ID:contains("+empid+")").parent();
+                // 전체에서 empid값이 100(만약에 100이라면..)인애를 찾아서 parent를 갖고온다. 
+                    if ((empInfo).is("ROW")) {	// 그게 row라면 0번지의 값은 사원번호에, 1번지의 값은 이름에 이렇게 넣어주자. 
+                        $("table input").each(function(i) {
+                            $(this).val($(empInfo).children().eq(i).text()); // table의 input태그를 가져왔으니까, this에는 input이 들어간다. 
+                            												// empInfo, children.. 얘네는 xml의 row
+                    	});
+                    } else {
+                   		alert("검색 대상이 존재하지 않습니다.");
+                   	}
+                },
+                error: function(request, error) {   //통신에 실패했을 때 실행할 함수
+                    alert("code: " + request.status + "\n\n" +
+                            "message: " + request.responseText + "\n\n" +
+                            "error: " + error);
+                }
+            });
+        
+        } else {
+            alert("사원번호를 다시한번 확인해 주세요!")
+        }
+
+    });
+});
+
+/* a.jax에는 객체리터럴만 들어가게 되어있다. api 꼭 읽어볼 것 
+
+*/
+</script>
+</head>
+<body>
+
+<!--XML : eXtensible MarkupLanguage : 확장 마크업 언어
+		emplist.xml을 클릭해서 source를 확인해본다. 
+		마음대로 태그를 만들어서 사용한다...?
+	
+	ajax : Asynchronous Javascript And Xml
+	서버 처리를 기다리지 않고, 비 동기 요청. 
+	
+	비동기? 클라이언트가 데이터에게 요청을 한다. 데이터가 응답을 한다. 네이버 뉴스탭, 쇼핑 탭 등.. 
+		  홈페이지는 변하지 않고 데이터만 변한다. 서버와 클라이언트가 동기화되있지않다. 동기화중입니다...아이튠즈..!-->
+		  
+    <h1>데이터 가져오기(비동기)</h1>
+
+    <fieldset>
+        <legend>사원정보 조회</legend>
+        <input type="text" name="empid"/>
+        <input type="button" id="emp_list" value="조회"/>
+    </fieldset>
+
+    <table>
+        <tr>
+            <th>사원번호</th>
+            <td><input type="text" name="empnum"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="lastname"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td><input type="text" name="phone"></td>
+        </tr>
+        <tr>
+            <th>입사일</th>
+            <td><input type="text" name="hire"></td>
+        </tr>
+    </table>	
+
+</body>
+</html>

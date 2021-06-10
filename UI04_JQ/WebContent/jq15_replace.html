@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+    	
+		//replaceWith:일치하는 요소 집합의 각 요소를 제공된 새 콘텐츠로 교체하고, 제거된 요소 집합을 반환합니다.
+    	$("button:first").click(function() {		// button:first를 클릭하면,
+    		// 교체할 타겟이 앞으로 온다(코드에서는 "p") 괄호 안에 배열 혹은 쿼리, 함수도 올 수 있다. 
+        	$("p").replaceWith("<p><b>replaceWith</b></p>"); 
+   		 });
+	
+		/*
+			첫번째 버튼을 클릭하면, p태그의 요소를 ()안의 내용으로 바꾸자. 
+		*/
+		
+		
+    	//replaceAll: 각 대상 요소를 일치하는 요소 집합으로 바꿉니다. 
+    	$("button:last").click(function() {			// button:last를 클릭하면, 
+    		// 교체할 타겟이 뒤에 온다. ("p") 괄호 안에 배열 혹은 쿼리, 함수도 올 수 있다. 
+        	$("<p><b>replaceAll</b></p>").replaceAll("p");
+	    });
+			
+		/*
+			마지막 버튼을 클릭하면, ..
+		*/
+	});
+	
+	
+
+</script>
+</head>
+<body>
+
+	<div>
+        <p>DOM 대체</p>
+    </div>
+
+    <button>바꾸기 (replaceWith)</button>
+    <br>
+    <button>바꾸기 (replaceAll)</button>
+	
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	$("div > p").eq(0).click(function(){
+		$("pre b").eq(0).toggle();
+	});
+	
+	$("div > p").eq(1).click(function(){
+		$("pre b").slice(1, 2).toggle();
+	});
+	
+	$("div > p").eq(2).click(function(){
+		//$("pre b").first().css("color", "red");
+		// $("pre b").eq(2).toggle();
+		$("pre b").first().css("color", "blue").end().eq(2).text("연결!").toggle();
+		 // pre b들 중에서 첫번째를 파란색으로 바꾸고!(하나만 선택된 상태) end().하면 ("pre b")로 돌아간다.도돌이표같은 느낌 처음으로 돌아가서 pre의 2번지 하니까 연결로 바꾸고 toggle해라 
+	});
+	
+	$("div > p").eq(3).click(function(){
+		$("pre b").last().toggle();
+	});
+});
+
+
+</script>
+</head>
+<body>
+
+	<pre>
+		<b>eq() : 선택한 엘리먼트 중, 인덱스로 탐색</b>
+		<b>slice() : 선택한 엘리먼트들 중, 인덱스 길이로 탐색</b>
+		<b>first() : 선택한 엘리먼트들 중, 첫번째 요소를 탐색</b>
+		<b>last() : 선택한 엘리먼트ㄷ을 중, 마지막 요소를 탐색</b>
+	</pre>
+	
+	<div>
+		<p>eq()</p>
+		<p>slice()</p>
+		<p>first()</p>
+		<p>last()</p>
+	</div>
+</body>
+</html>

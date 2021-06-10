@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <style type="text/css">
+        .box {
+            border: 2px solid red;
+        }
+
+        #menu {
+            background-color: skyblue;
+            text-align: right;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 20pt;
+        }
+
+        #menu div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+    
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	// wrap : 일치하는 요소 집합에서 각 요소 주위에 HTML 구조를 래핑합니다
+	$(function(){
+	    
+	    var $box = $("<div>").addClass("box");
+	    // 첫번째 서브메뉴에 class명을 설정
+	    // 위에서 만든 class가 박스인 친구로 감싼다.
+	    $(".sub_menu:first").wrap($box);
+	    $(".sub_menu").click(function(){
+	        // 다른 박스를 클릭하면 언랩
+	        $(".sub_menu").each(function(){
+	            // 다른메뉴박스를 클릭하면 전에 클릭했던 박스에
+	            // 클레스 명을 지움
+	            if($(this).parent().is(".box")) {
+	                $(this).unwrap(".box");
+	            }
+	        });
+	        $(this).wrap($box);
+	    });
+	    
+	    $("a").wrapInner("<span></span>"); // a태그를 찾아서 안쪽의 자식 요소들을 모두 span으로 감싸라. f12확인해보면(Elements) 감싸있는걸 확인할 수 있다. 
+		$("pre").wrapAll("<b></b>");	// wrapAll: pre태그를 찾아서 전체를 b태그로 감싸라.	wrapInner는 안쪽에 감싸고, wrapAll은 바깥에 감싸는걸 확인할 수 있다. 
+	});
+	
+	/*
+	$box는 변수다. 변수앞에 $ 사용 가능, 자바스크립트에서 $box 앞에 뭐가 있다면 제이쿼리라고 인식한다.  
+	$box = <div class="box"></div> 이런 뜻
+	
+	sub_menu:first =>         
+	<div class="box"><div class="sub_menu"> <a href="#"><span>국비지원</span></a><div> <= 요건 $box로 감싼 형태
+	box가 class인 div애를 빨간색 네모로 만들어놓으라고 css로 지정했다.
+	
+	$("배열").each:객체 하나하나에 함수를 반복한다.
+	만일 자기의 부모가 .box를 가지고 있다면, 부모의 div태그(박스)를 없애버려라
+	
+	 $(this).wrap($box); -> 클릭한 애에게 div의 박스를 넣어줘라
+	*/
+	
+</script>
+
+</head>
+<body>
+
+    <div id="menu">
+        <div class="sub_menu">
+            <a href="#"><span>국비지원</span></a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">훈련검색</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">기관검색</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">질문답변</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">과정후기</a>
+        </div>
+    </div>
+	
+	<pre>a</pre>
+	<pre>b</pre>
+	<pre>c</pre>
+	<pre>d</pre>
+	<pre>e</pre>
+	
+	
+
+</body>
+</html>

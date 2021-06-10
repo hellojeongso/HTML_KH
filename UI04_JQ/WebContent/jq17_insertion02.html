@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+    img {
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+    #menubox {position: relative;}
+    #menu {overflow: auto;} 			
+    .sel {
+        width: 140px;
+        height: 140px;
+        border: 5px dotted red;
+        position: absolute;
+        left: 300px;
+    }
+    button {
+        width: 150px;
+        height: 50px;
+        margin-left: 300px;
+    }
+</style>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		// setInterval : 일정 시간마다 해당 함수를 반복한다. 
+	    // 0.05초동안 지연시간을 발생시키면서, 
+	    setInterval(function() {
+	        var div = $("#menu");
+	        // appendTo: 일치하는 요소 집합의 모든 요소를 ​​대상 끝에 삽입한다. div태그의 자식 요소중 가장 뒤에 추가한다. 
+	        // 클래스명 active에 첫번째를 마지막에 연결해준다 ?? 
+	        $(".active").first().appendTo(div);
+	        //0.05초
+	    }, 50);
+	    $("button").click(function() {
+	        // 버튼을 누르면 이미지에 "active"클래스를 추가하고 삭제한다. 
+	        $("img").toggleClass("active");
+	        // 버튼이 start일 때, stop으로 바꿔준다. 
+	        if ($("button").text() == "start") {
+	            $("button").text("stop");
+	        } else {
+	            // 버튼이 stop이면 start로 바꿔준다. 
+	            $("button").text("start");
+	        }
+	    });
+	});
+	
+	/*
+	id가 메뉴인애를 찾아서, .actiov를 가지고 있는애의 퍼스트를 찾아서 appendto
+	버튼을 클릭했을때 스타트는 스탑, 스탑은 스타트..할때 이미지가 active가 이미지들한테 붙는다. 아까 배운거 참고 개발자도구! 
+	target.apped(소스): 타겟의 자식요소중 맨 뒤에 소스 추가
+	source.appendTo(타겟): 타겟의 자식요소중 맨뒤에 소스 추가 
+	결론은 둘다 똑같은데 타겟과 소스 위치가 다르다. 
+	*/
+</script>
+
+
+</head>
+<body>
+
+
+		<h1>777</h1>
+	    <div id="menubox">
+        <div class="sel"></div>
+
+        <div id="menu">
+            <img src="resources/image/img01.PNG" alt="">
+            <img src="resources/image/img02.PNG" alt="">
+            <img src="resources/image/img03.PNG" alt="">
+            <img src="resources/image/img04.PNG" alt="">
+            <img src="resources/image/img05.PNG" alt="">
+        </div>
+
+        <button>start</button>
+    </div>
+    
+</body>
+</html>

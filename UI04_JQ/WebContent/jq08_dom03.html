@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function(){
+		$("p:eq(0)").add("span").css("color", "red");
+		
+		$("div").children().click(function(){
+			if($(this).prop("tagName") == "SPAN"){
+				alert("span 태그 클릭");
+				$(this).css("color", "skyblue");
+			}
+			
+			if($(this).is("p")){
+				$(this).css("background-color", "hotpink");
+			}
+		});
+		
+		$("b").click(function(){
+			$("p:eq(0)").add("span").css("color", "red");
+			$("div").children().css("background-color",""); //원상복구해놈
+		});
+	});
+	
+	// p태그 클릭하면 레드로 바뀜
+	// div
+	// b태그 클릭하면 원래대로 돌아감
+	// $안에 들어가는건 선택자. css 표현식이다. 거기에 add가 붙는다면 add() 추가로 뭘 더 가져오겠다.
+	// p의 eq0번지 잡고, 추가로 span도 잡고 css를 red로 바꾸자 
+	// this는 클릭 이벤트가 발생된 애. if(this) <- 클릭된애가 ~~~하게된다면, .. 
+	// if($(this).prop("tagName") == "SPAN"){ children중에 클릭이벤트가 발생한 애의 속성을 가지고 왔는데 span이라면,  
+	// if($(this).is("p")){ => p가 참이라면. is~이다.
+	// j쿼리가 태그이름을 대문자로 저장해놨다. 
+
+	
+		
+</script>
+
+</head>
+<body>
+
+	<div>
+		<p>add()</p>
+		<span>선택한 엘리먼트에 추가적으로 selector 표현식을 작성할 때 사용</span>
+		<p>is()<p>
+		<b>선택한 엘리먼트들 중에 구하는 엘리먼트가 있는지를 확인</b>
+	</div>
+</body>
+</html>
