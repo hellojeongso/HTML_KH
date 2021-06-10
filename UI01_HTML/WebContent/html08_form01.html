@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form action="html08_form01_res.html" method="post"> <!-- get -->
+		<fieldset>
+			<legend>회원가입</legend>
+			<p>
+				아이디 : <input type="text" name="id"/>
+			</p>
+			<p>
+				비밀번호 : <input type="password" name="pw"/>
+			</p>
+			<p>
+				이메일 수신여부<br/>
+				<input type="radio" name="rdo" value="y">Y<br/>
+				<input type="radio" name="rdo" value="n">N
+				<!--  radio button은 같은 이름일 때 중복 선택 불가! -->
+			</p>
+			<p>
+				관심분야<br/>
+				<input type="checkbox" name="cb1" value="html" />HTML<br/>
+				<input type="checkbox" name="cb2" value="css" />CSS<br/>
+				<input type="checkbox" name="cb3" value="javascript" />JavaScript<br/>
+			</p>
+				<input type="button" value="그냥 버튼"/>
+				<input type="reset" value="취소"/>
+				<input type="submit" value="전송"/>
+			</p>
+			<p>
+				<input type="file"/>
+				<input type="hidden" name="myhidden" value="my hidden value" />
+			</p>
+		</fieldset>
+	</form>
+
+
+
+</body>
+</html>

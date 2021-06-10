@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>select</h1>
+	
+	<form action="#">
+		<fieldset>
+			<legend>여러줄 글상자 &amp; 목록상자</legend>
+			
+			<div>
+				<label for="reply">답글</label><br/>
+				<textarea rows="3" cols="10" id="reply" name="re"></textarea>
+			</div>
+			<div>
+				과목선택
+				<br/>
+				<select name="sel01">
+					<option value="html">HTML</option>
+					<option value="css">CSS</option>
+					<option value="js">JavaScript</option>
+					<option value="jq">JQery</option>
+				</select>
+			</div>
+			<div>
+				저녁메뉴
+				<select name="sel02">
+					<optgroup label="한식">
+						<option value="갈비찜">갈비찜</option>
+						<option value="잡채">잡채</option>						
+					</optgroup>
+					<optgroup label="중식">
+						<option value="마라샹궈">마라샹궈</option>
+						<option value="훠궈">훠궈</option>
+					</optgroup>
+					<optgroup label="일식">
+						<option value="스시">스시</option>
+						<option value="우동">우동</option>
+					</optgroup>
+					<optgroup label="양식">
+						<option value="스테이크">스테이크</option>
+						<option value="감자튀김">감자튀김</option>
+					</optgroup>
+					</select>
+			</div>
+			<div>
+				<input type="submit" value="전송"/>
+			</div>
+			
+		</fieldset>
+	</form>
+</body>
+</html>
