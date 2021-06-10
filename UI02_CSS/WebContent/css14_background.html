@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	div, p {
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+	}
+	#bgsize {
+		background: url("resources/image/img02.PNG");
+		background-size: contain;
+	}
+	#multibg {
+		background-image: url("resources/image/img01.PNG"), url("resources/image/img02.PNG");
+		background-size: contain;
+	}
+	#bgclip {
+		border: 10px dotted black;
+		padding: 50px;
+		background-color: skyblue;
+		background-clip: padding-box;
+	}
+	
+	#txtshadow{
+		text-shadow: 1px 2px red;
+	}
+	
+	#wrap{
+		word-wrap: break-word; 
+	}
+	/*
+	이클립스가 word wrap 지원 안해줘서 하나하나 써야한다고 함 
+	*/
+	
+	@font-face{
+		font-family: "Goyang";
+		src: url("resources/Goyadg.ttf") format("truetype");
+	}
+	
+	#goyang{
+		font-family: "Goyang";
+		font-size: 30px;
+	}
+	
+</style>
+</head>
+<body>
+
+
+	<h1>background-size</h1>
+	<div id="bgsize">background-size</div>
+	
+	<h1>multi-background</h1>
+	<div id="multibg">multi-background</div>
+	
+	<h1>background-clip</h1>
+	<div id="bgclip">background-clip</div>
+	
+	<h1>text-shadow</h1>
+	<div id="txtshadow">text-shadow</div>
+	
+	<h1>word-wrap</h1>
+	<p id="wrap">공백없이아무거나막쓰기쓰기쓰기</p>
+	
+	<h1>font-face</h1>
+	<div id="goyang">고양시 고양체 이쁘다.</div>
+	
+</body>
+</html>
